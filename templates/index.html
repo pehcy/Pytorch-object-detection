@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+  <!-- div class="col-sm-8 offset-sm-2" -->
+  <div class="mb-2 col-md-6 offset-md-3">
+    <form action="/segmentation" method="POST" enctype="multipart/form-data">
+      <h1>Heroku Image Detection</h1>
+      <img src="" class="rounded-0">
+      <div class="input-group mb-3">
+        <label for="__browse-file">Upload an image</label>
+        <input type="file" name="image-file" 
+          id="__browse-file"
+          accept=".jpg, .jpeg, .png" 
+          class="form-control-file"
+          aria-describedby="inputGroupFileAddon04"
+        >
+        <label for="__entity-name">Search for entity</label>
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input type="text" class="form-control"
+          id="__entity-name"
+          placeholder="Name of object..."
+          aria-label="looking for entity" aria-describedby="basic-addon1">
+          {% if filename %}
+            <img src="{{ url_for('send_file', filename=filename)}}">
+          {% endif %}
+        <button class="btn btn-outline-secondary" type="submit" disabled>Start Training</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
