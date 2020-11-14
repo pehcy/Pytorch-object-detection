@@ -1,7 +1,7 @@
 var validate = Array(2).fill(false);
 
 window.addEventListener('DOMContentLoaded', function() {
-  const fieldInputs = ["__browse-file", "__entity-name"].map(_ => document.getElementById(_))
+  const fieldInputs = ["__browse-file", "__entity-name"].map(el => document.getElementById(el))
   for (const [index, elem] of fieldInputs.entries()) {
     elem.addEventListener('input', e => {
       validate[index] = e.value || e.target ? true : false;
